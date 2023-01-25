@@ -1,0 +1,13 @@
+{
+  "name": "bank-app",
+  "version": "1.0.0",
+  "description": "Bank App",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "start": "cd frontend && npm start & cd backend && npm run server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
