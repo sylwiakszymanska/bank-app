@@ -16,7 +16,9 @@ interface IProps {
 const StyledContainer = styled.div`
   padding-bottom: 32px;
   position: relative;
+  min-height: calc(100vh - 32px);
 `;
+
 const Row = styled.div`
   display: flex;
   flex-direction: row;
