@@ -3,10 +3,10 @@ import styled from '@emotion/styled';
 
 interface IProps {
   data: ITransaction;
-  onDelete: (id: string) => void;
+  onDelete: (id: number) => void;
 }
 
-const StyledForm = styled.div`
+const StyledTransaction = styled.div`
   border: 1px solid #f2f3f4;
   background-color: #f5f5f5;
   padding: 10px 20px;
@@ -73,7 +73,7 @@ const RedText = styled.p`
 `;
 
 export interface ITransaction {
-  id: string;
+  id: number;
   date: string;
   description: string;
   amount: number;
@@ -91,7 +91,7 @@ const colorAmount = (amount: number) => {
 
 export const Transaction: FC<IProps> = ({ data, onDelete }) => {
   return (
-    <StyledForm>
+    <StyledTransaction data-test-id="transaction">
       <Date>{formatDate(data.date)}</Date>
       <Beneficiary>{data.beneficiary}</Beneficiary>
       <Address>{data.address}</Address>
@@ -107,6 +107,6 @@ export const Transaction: FC<IProps> = ({ data, onDelete }) => {
           Delete
         </StyledButton>
       </Delete>
-    </StyledForm>
+    </StyledTransaction>
   );
 };

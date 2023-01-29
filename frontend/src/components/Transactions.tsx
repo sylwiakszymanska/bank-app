@@ -4,12 +4,11 @@ import { Transaction } from './Transaction';
 import { useTransactionContext } from '../transactions-context-provider';
 import { InfiniteScroll } from './InfiniteScroll';
 
-
 export const Transactions: FC = () => {
   const { transactions, deleteTransaction, nextPage, filterMode } = useTransactionContext();
 
   return (
-    <div>
+    <div data-test-id="transactions-list">
       {transactions?.map((transaction) => (
         <Transaction
           key={transaction.id}

@@ -8,7 +8,8 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
-    project: ['./tsconfig.json'],
+    project: './tsconfig.json',
+    tsconfigRootDir: __dirname,
   },
   plugins: ['react', '@typescript-eslint'],
   rules: {
@@ -18,7 +19,6 @@ module.exports = {
     '@typescript-eslint/explicit-function-return-type': 'off',
     'no-unused-vars': 'off',
     '@typescript-eslint/no-unused-vars': 'warn',
-        "@typescript-eslint/no-floating-promises": "warn"
-
+    '@typescript-eslint/no-floating-promises': 'warn',
   },
 };
