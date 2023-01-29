@@ -2,7 +2,7 @@ import { type ITransaction } from '../../src/components/Transaction';
 import allTransactionsRaw from '../fixtures/transactions_all.json';
 
 const allTransactions = allTransactionsRaw as ITransaction[];
-console.log({ allTransactions });
+
 const getByDataTestId = (dataTestId: string) => cy.get(`[data-test-id="${dataTestId}"]`);
 
 describe('Bank app integration tests', () => {
