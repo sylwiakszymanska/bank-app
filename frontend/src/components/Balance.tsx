@@ -30,7 +30,7 @@ export const Balance: FC = () => {
   return (
     <StyledBalance>
       <StyledTitle>Balance:</StyledTitle>
-      <Amount>{`${balance} PLN`}</Amount>
+      <Amount data-test-id="balance-amount">{`${balance.toFixed(2)} PLN`}</Amount>
     </StyledBalance>
   );
 };

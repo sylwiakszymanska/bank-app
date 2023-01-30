@@ -14,7 +14,7 @@ interface IProps {
 
 interface ContextProps {
   transactions: ITransaction[];
-  deleteTransaction: (id: string) => void;
+  deleteTransaction: (id: number) => void;
   addTransaction: (data: ITransaction) => void;
   nextPage: () => void;
   getAllTransactions: () => Promise<ITransaction[]>;
@@ -39,10 +39,10 @@ const TransactionsProvider: FC<IProps> = ({ children }) => {
 
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
   const initialFetch = () => {
-      void getTransactions(page).then((response) => {
+    void getTransactions(page).then((response) => {
       setTransactions(response);
     });
-  }
+  };
 
   useEffect(() => {
     initialFetch();
@@ -59,7 +59,7 @@ const TransactionsProvider: FC<IProps> = ({ children }) => {
     });
   };
 
-  const deleteTransaction = (id: string) => {
+  const deleteTransaction = (id: number) => {
     removeTransaction(id)
       .then(async () => {
         await getTransactions(page).then((r) => {

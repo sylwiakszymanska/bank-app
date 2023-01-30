@@ -96,14 +96,14 @@ export const TransactionForm: FC = () => {
         ...values,
         amount: Number(values.amount),
         date: new Date().toISOString(),
-        id: Date.now().toString(),
+        id: Date.now(),
       });
       clearForm();
     }
   };
 
   return (
-    <StyledForm>
+    <StyledForm data-test-id={'transaction-form'}>
       <Input
         name="amount"
         placeholder="Amount"
@@ -111,6 +111,7 @@ export const TransactionForm: FC = () => {
         value={values.amount}
         onChange={handleChange}
         onBlur={validateForm}
+        dataTestId={'input-amount'}
       />
       <Input
         name="beneficiary"
@@ -119,6 +120,7 @@ export const TransactionForm: FC = () => {
         value={values.beneficiary}
         onChange={handleChange}
         onBlur={validateForm}
+        dataTestId={'input-beneficiary'}
       />
       <Input
         name="account"
@@ -127,6 +129,7 @@ export const TransactionForm: FC = () => {
         value={values.account}
         onChange={handleChange}
         onBlur={validateForm}
+        dataTestId={'input-account'}
       />
       <Input
         name="address"
@@ -135,6 +138,7 @@ export const TransactionForm: FC = () => {
         value={values.address}
         onChange={handleChange}
         onBlur={validateForm}
+        dataTestId={'input-address'}
       />
       <Input
         name="description"
@@ -143,12 +147,14 @@ export const TransactionForm: FC = () => {
         value={values.description}
         onChange={handleChange}
         onBlur={validateForm}
+        dataTestId={'input-description'}
       />
       <StyledButton
         type="button"
         onClick={(event) => {
           submitForm(event);
-        }}>
+        }}
+        data-test-id={'submit-form-button'}>
         Submit
       </StyledButton>
     </StyledForm>

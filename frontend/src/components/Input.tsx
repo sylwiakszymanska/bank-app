@@ -8,6 +8,7 @@ interface IProps {
   placeholder: string;
   onChange: (name: string, value: string) => void;
   onBlur: () => void;
+  dataTestId: string;
 }
 
 const StyledInput = styled.div`
@@ -26,7 +27,15 @@ const Error = styled.p`
   margin: 0;
 `;
 
-export const Input: FC<IProps> = ({ errorMessage, value, name, placeholder, onChange, onBlur,  }) => {
+export const Input: FC<IProps> = ({
+  errorMessage,
+  value,
+  name,
+  placeholder,
+  onChange,
+  onBlur,
+  dataTestId,
+}) => {
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
     onChange(name, value);
@@ -34,7 +43,13 @@ export const Input: FC<IProps> = ({ errorMessage, value, name, placeholder, onCh
 
   return (
     <StyledInput>
-      <input placeholder={placeholder} value={value} onChange={handleChange} onBlur={onBlur} />
+      <input
+        data-test-id={dataTestId}
+        placeholder={placeholder}
+        value={value}
+        onChange={handleChange}
+        onBlur={onBlur}
+      />
       <Error>{errorMessage}</Error>
     </StyledInput>
   );

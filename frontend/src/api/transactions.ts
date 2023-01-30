@@ -14,18 +14,16 @@ export const submitTransaction = async (data: ITransaction) => {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(data),
-  })
-    .then(async (response) => await response.json())
+  }).then(async (response) => await response.json());
 };
 
-export const removeTransaction = async (id: string) => {
+export const removeTransaction = async (id: number) => {
   await fetch(`http://localhost:3000/transactions/${id}`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
     },
-  })
-    .then(async (response) => await response.json());
+  }).then(async (response) => await response.json());
 };
 
 export const filterTransactionByBeneficiary = async (name: string) =>

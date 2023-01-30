@@ -7,7 +7,6 @@ import { TransactionForm } from './components/TransactionsForm';
 import { Transactions } from './components/Transactions';
 import { Filter } from './components/Filter';
 import { Footer } from './components/Footer';
-import { type ITransaction } from './components/Transaction';
 
 interface IProps {
   isVisible: boolean;
@@ -68,22 +67,8 @@ const Loader = styled.img`
   top: 40%;
 `;
 
-const sortDates = (array: ITransaction[]) =>
-  array.sort((a, b) => {
-    return new Date(b.date).valueOf() - new Date(a.date).valueOf();
-  });
-
 function App() {
   const [isLoaderVisible, setLoaderVisible] = useState(false);
-
-  const submitTransaction = () => {
-    setLoaderVisible(true);
-
-    setTimeout(() => {
-      setLoaderVisible(false);
-      console.log('Delayed for 1 second.');
-    }, 2000);
-  };
 
   return (
     <StyledContainer>

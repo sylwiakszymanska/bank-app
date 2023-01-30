@@ -8,7 +8,7 @@ const sumTransactionAmounts = (array: ITransaction[]) =>
     .reduce((accumulator: number, currentValue: number) => accumulator + currentValue, 0);
 
 export const useBalance = () => {
-  const { getAllTransactions } = useTransactionContext();
+  const { getAllTransactions, transactions } = useTransactionContext();
   const [balance, setBalance] = useState(0);
 
   useEffect(() => {
@@ -19,7 +19,7 @@ export const useBalance = () => {
     };
 
     countBalance();
-  }, []);
+  }, [transactions]);
 
   return { balance };
 };

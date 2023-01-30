@@ -6,7 +6,7 @@
   "devDependencies": {},
   "scripts": {
     "start": "cd frontend && npm start & cd backend && npm run server",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "cd frontend && npm run cypress:open"
   },
   "author": "",
   "license": "ISC"

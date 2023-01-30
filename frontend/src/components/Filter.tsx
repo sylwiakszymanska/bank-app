@@ -29,7 +29,7 @@ export const Filter: FC = () => {
 
   return (
     <StyledFilter>
-      <input onChange={handleFilterChange} placeholder="Filter" />
+      <input data-test-id="filter-input" onChange={handleFilterChange} placeholder="Filter" />
     </StyledFilter>
   );
 };
