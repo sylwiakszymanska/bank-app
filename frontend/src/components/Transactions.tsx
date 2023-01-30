@@ -18,7 +18,7 @@ export const Transactions: FC = () => {
           }}
         />
       ))}
-      <InfiniteScroll isActive={transactions.length > 0 && !filterMode} onBottomReach={nextPage} />
+      <InfiniteScroll isActive={transactions.length > 19 && !filterMode} onBottomReach={nextPage} />
     </div>
   );
 };

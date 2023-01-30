@@ -59,7 +59,7 @@ describe('Bank app integration tests', () => {
     // submitting form
     getByDataTestId('submit-form-button').should('be.visible').click();
 
-    cy.intercept('POST', 'transactions');
+    cy.intercept('POST', '/transactions');
     cy.intercept('GET', '/transactions?_page=1&_limit=20', { fixture: 'transactions_page1' });
     cy.intercept('GET', '/transactions', [...allTransactions, newTransactionData]);
     // checking snackbar notification
@@ -73,6 +73,42 @@ describe('Bank app integration tests', () => {
     getByDataTestId('balance-amount').should('contain.text', '2327.97 PLN');
   });
 
-  it.skip('Should be able to delete transaction', () => {});
-  it.skip('Should be able to filter transactions by benefitiary', () => {});
+  it('Should be able to delete transaction', () => {
+    getByDataTestId('balance-amount').should('contain.text', '-7672.03 PLN');
+
+    getByDataTestId('transaction-delete').should('contain.text', 'Delete').first().click();
+
+    cy.intercept('DELETE', '/transactions/**');
+    cy.intercept(
+      'GET',
+      '/transactions',
+      allTransactions.filter((transaction) => transaction.id !== 18)
+    );
+    // checking snackbar notification
+    cy.get('#notistack-snackbar')
+      .should('be.visible')
+      .should('contain.text', 'Successfully deleted');
+
+    cy.get('#notistack-snackbar').should('not.exist');
+
+    getByDataTestId('balance-amount').should('contain.text', '-8686.54');
+  });
+  it('Should be able to filter transactions by benefitiary', () => {
+    getByDataTestId('filter-input')
+      .should('have.attr', 'placeholder', 'Filter')
+      .should('have.value', '')
+      .type('Kennedy');
+
+    cy.intercept('GET', '/transactions?beneficiary_like=Kennedy', {
+      fixture: 'filtered_transactions',
+    });
+
+    cy.wait(2000);
+    getByDataTestId('transactions-list')
+      .should('be.visible')
+      .should('have.length', 1)
+      .within(() => {
+        getByDataTestId('transaction').should('be.visible').should('have.length', 1);
+      });
+  });
 });

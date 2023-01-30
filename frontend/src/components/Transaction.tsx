@@ -97,13 +97,14 @@ export const Transaction: FC<IProps> = ({ data, onDelete }) => {
       <Address>{data.address}</Address>
       <Description>{data.description}</Description>
       <Account>{data.account}</Account>
-      <Amount>{colorAmount(data.amount)}</Amount>
+      <Amount data-test-id="transaction-amount">{colorAmount(data.amount)}</Amount>
       <Delete>
         <StyledButton
           onClick={(event) => {
             event.preventDefault();
             onDelete(data.id);
-          }}>
+          }}
+          data-test-id="transaction-delete">
           Delete
         </StyledButton>
       </Delete>
