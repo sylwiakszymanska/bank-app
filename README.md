@@ -3,10 +3,17 @@
 In order to start this app run:
 
 In /frontend directory:
->npm install
+
+> npm install
 
 In /backend directory:
->npm install
+
+> npm install
 
 In root directory:
->npm start
+
+> npm start
+
+To run cypress tests:
+
+> npm run test
