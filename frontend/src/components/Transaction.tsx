@@ -90,6 +90,17 @@ const colorAmount = (amount: number) => {
 };
 
 export const Transaction: FC<IProps> = ({ data, onDelete }) => {
+  const handleDeletion = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    const container = event.currentTarget.closest('div');
+    if (container !== null) {
+      container.style.transition = 'all 0.5s';
+      container.style.opacity = '0';
+    }
+    setTimeout(() => {
+      onDelete(data.id);
+    }, 700);
+  };
+
   return (
     <StyledTransaction data-test-id="transaction">
       <Date>{formatDate(data.date)}</Date>
@@ -102,7 +113,7 @@ export const Transaction: FC<IProps> = ({ data, onDelete }) => {
         <StyledButton
           onClick={(event) => {
             event.preventDefault();
-            onDelete(data.id);
+            handleDeletion(event);
           }}
           data-test-id="transaction-delete">
           Delete
